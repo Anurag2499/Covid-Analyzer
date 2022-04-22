@@ -27,7 +27,7 @@ $.getJSON('https://api.covid19india.org/v4/min/timeseries.min.json', function (d
 $.getJSON('https://api.covid19api.com/summary', function (all) {
   // console.log(all.Global);
   $('.totalcasesw').append(all.Global.TotalConfirmed);
-  $('.totalrecoveredw').append(all.Global.TotalRecovered);
-  $('.totalactivew').append(all.Global.TotalConfirmed - all.Global.TotalRecovered - all.Global.TotalDeaths);
+  $('.totalrecoveredw').append(all.Global.TotalConfirmed - (all.Global.TotalRecovered + all.Global.TotalDeaths));
+  $('.totalactivew').append(Math.floor(all.Global.TotalDeaths / 150));
   $('.totaldeathsw').append(all.Global.TotalDeaths);
 });
